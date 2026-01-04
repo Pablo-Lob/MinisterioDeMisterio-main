@@ -1,0 +1,99 @@
+:root {
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --primary: #e94560;
+    --accent: #ffd700;
+    --text: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #30475e;
+}
+
+button {
+    background: linear-gradient(45deg, #e94560, #c03546);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.4);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(233, 69, 96, 0.6);
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.secondary-btn {
+    display: inline-block;
+    background-color: #0f3460;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 5px;
+    transition: background 0.3s;
+    border: 1px solid #533483;
+}
+
+.secondary-btn:hover {
+    background-color: #533483;
+}
+
+.status-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.hidden { display: none; }
+.processing { background-color: #533483; color: #fff; }
+.success { background-color: #2ecc71; color: #000; }
+.error { background-color: #e74c3c; color: #fff; }
+
+footer {
+    margin-top: 3rem;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}

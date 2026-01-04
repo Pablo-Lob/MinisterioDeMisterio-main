@@ -4,3 +4,4 @@ id,nombre,nivelPeligrosidad,estaMaldito
 3,Caldero Chorreado,Bajo,false
 4,Capa de Invisibilidad,Medio,false
 5,Collar de Ópalo,Alto,true
+6,ERROR_TEST,Bajo,false

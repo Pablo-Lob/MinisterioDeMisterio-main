@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministerio de Magia - Control Batch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="main-container">
+    <header>
+        <h1>🔮 Ministerio de Magia</h1>
+        <p>Departamento de Misterios - Sistema de Procesamiento de Artefactos</p>
+    </header>
+
+    <section class="control-panel">
+        <div class="card">
+            <h2>⚡ Ejecución de Procesos</h2>
+            <p>Inicie el procesamiento masivo de artefactos detectados.</p>
+            <button id="btnImportar" onclick="iniciarJob()">Importar Artefactos (Batch)</button>
+            <div id="resultado" class="status-box hidden"></div>
+        </div>
+
+        <div class="card links-card">
+            <h2>🛠️ Herramientas Administrativas</h2>
+            <div class="button-group">
+                <a href="/h2-console" target="_blank" class="secondary-btn">🗄️ Base de Datos (H2)</a>
+                <a href="/actuator/health" target="_blank" class="secondary-btn">❤️ Estado del Sistema</a>
+                <a href="/actuator/batch/jobs" target="_blank" class="secondary-btn">📊 Historial de Jobs</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Sistema desarrollado por: Luis S., Pablo L. y Jiachen Y.</p>
+    </footer>
+</div>
+
+<script>
+    async function iniciarJob() {
+        const btn = document.getElementById('btnImportar');
+        const res = document.getElementById('resultado');
+
+        // Estado visual de carga
+        btn.disabled = true;
+        btn.textContent = "✨ Conjurando Job...";
+        res.className = "status-box processing";
+        res.textContent = "⏳ Enviando solicitud al servidor...";
+        res.classList.remove('hidden');
+
+        try {
+            // Llamada al endpoint que creaste en JobController
+            const response = await fetch('/job/importar', { method: 'POST' });
+            const text = await response.text();
+
+            if (response.ok) {
+                res.className = "status-box success";
+                res.textContent = "✅ " + text;
+            } else {
+                res.className = "status-box error";
+                res.textContent = "❌ Error: " + text;
+            }
+        } catch (error) {
+            res.className = "status-box error";
+            res.textContent = "☠️ Error de conexión: " + error.message;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = "Importar Artefactos (Batch)";
+        }
+    }
+</script>
+</body>
+</html>

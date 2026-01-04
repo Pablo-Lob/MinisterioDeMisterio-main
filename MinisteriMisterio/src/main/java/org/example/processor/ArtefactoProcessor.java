@@ -13,9 +13,14 @@ public class ArtefactoProcessor implements ItemProcessor<ArtefactoMagico, Artefa
     private static final Logger log = LoggerFactory.getLogger(ArtefactoProcessor.class);
 
     @Override
-    public ArtefactoMagico process(@NonNull ArtefactoMagico item) {
-        // Log eficiente del evento
+    public ArtefactoMagico process(@NonNull ArtefactoMagico item) throws Exception { // Añade throws
         log.debug("Analizando artefacto: {}", item.getNombre());
+
+        // Simulación de un error crítico para probar la tolerancia a fallos
+        if ("ERROR_TEST".equals(item.getNombre())) {
+            log.error("Simulando fallo crítico en artefacto: {}", item.getNombre());
+            throw new RuntimeException("Fallo simulado para probar FaultTolerant");
+        }
 
         if ("Alto".equalsIgnoreCase(item.getNivelPeligrosidad())) {
             item.setEstadoProcesamiento("EN_CUARENTENA");

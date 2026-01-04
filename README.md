@@ -119,6 +119,20 @@ El sistema implementa el patrón clásico ETL (Extract, Transform, Load):
 5.**Monitorización:**
    - Ver estado del sistema: http://localhost:8080/actuator/health
 ----------------
+### EVIDENCIAS DE EJECUCIÓN:
+1. **Base de Datos (H2 Console):**
+   Tabla `ARTEFACTO_MAGICO` con los registros procesados.
+   ![Tabla H2](capturas/h2_console.png)
+
+2. **Logs de la Consola:**
+   Inicio y fin del Job, destacando el error simulado ("ERROR_TEST").
+   ![Logs Consola](capturas/logs_console.png)
+
+   3. **Monitorización (Actuator):**
+      Respuesta JSON del endpoint de salud (`/actuator/health`) indicando que el servicio está UP y la web estatica encendida.
+      ![Actuator JSON](capturas/actuator2.png)
+      ![Actuator WEB](capturas/actuator.png)
+----------
 ### TECNOLOGÍAS UTILIZADAS:
 - Java 21
 - Spring Boot 3.2.2
@@ -129,4 +143,3 @@ El sistema implementa el patrón clásico ETL (Extract, Transform, Load):
 - Maven (Gestión de proyectos)
 - Lombok (Reducción de código boilerplate)
 - SLF4J (Sistema de Logging)
-
