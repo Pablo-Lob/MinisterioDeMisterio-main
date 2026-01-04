@@ -1,0 +1,6 @@
+id,nombre,nivelPeligrosidad,estaMaldito
+1,Varita de Saúco,Alto,false
+2,Horrocrux Diario,Alto,true
+3,Caldero Chorreado,Bajo,false
+4,Capa de Invisibilidad,Medio,false
+5,Collar de Ópalo,Alto,true
