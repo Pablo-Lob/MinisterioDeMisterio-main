@@ -98,26 +98,29 @@ El sistema implementa el patrón clásico ETL (Extract, Transform, Load):
    persiste, salte el registro defectuoso sin detener todo el lote.
    
 ------
-   ### CÓMO EJECUTAR:
+------
+### CÓMO EJECUTAR:
 1. **Iniciar la aplicación:**
    Ejecutar la clase principal 'MinisterioApplication.java'
    con **``mvn spring-boot:run``**.
 
-2. **Verificar ejecución automática:**
-   Revisar la consola. Deberán aparecer logs indicando "JOB FINALIZADO".
+2. **Acceder al Panel de Control (Web):**
+    - Abrir navegador: http://localhost:8080/
+    - Desde aquí podrás lanzar el proceso y ver los enlaces a las herramientas.
 
-3. **Verificar Base de Datos (Resultados):**
-   - Abrir navegador: http://localhost:8080/h2-console
-   - JDBC URL: jdbc:h2:mem:ministeriodb
-   - User: sa
-   - Password: (vacio)
-   - Ejecutar SQL pegando la siguiente linea y dandole al run: SELECT * FROM ARTEFACTO_MAGICO;
+3. **Ejecutar el Proceso Batch:**
+    - En la web, pulsar el botón **"Importar Artefactos (Batch)"**.
+    - Esperar el mensaje de confirmación verde ("¡Trabajo iniciado...").
+    - (Alternativa técnica: Enviar POST manual a `http://localhost:8080/job/importar`).
 
-4. **Ejecución Manual (Reanudación):**
-   - Enviar petición POST: http://localhost:8080/job/importar
+4. **Verificar Base de Datos (Resultados):**
+    - Clic en el botón **"Base de Datos (H2)"** de la web o ir a http://localhost:8080/h2-console
+    - **IMPORTANTE:** Configurar JDBC URL a: `jdbc:h2:mem:ministeriodb`
+    - User: `sa` | Password: *(vacío)*
+    - Ejecutar SQL: `SELECT * FROM ARTEFACTO_MAGICO;`
 
-5.**Monitorización:**
-   - Ver estado del sistema: http://localhost:8080/actuator/health
+5. **Monitorización:**
+    - Ver estado del sistema: Clic en **"Estado del Sistema"** o ir a http://localhost:8080/actuator/health
 ----------------
 ### EVIDENCIAS DE EJECUCIÓN:
 1. **Base de Datos (H2 Console):**
